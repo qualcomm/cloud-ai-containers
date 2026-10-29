@@ -26,19 +26,27 @@ The images contained are:
   It's based on Red Hat's UBI9 base image.
   Entrypoint: /bin/bash
 
-- cloud_ai_inference_rh_ubi9_vllm_tgis:
+- cloud_ai_inference_rh_ubi9_vllm:
   This image is useful for performing inferences and working with models.
   It's able to compile models for, and execute models on AIC100 cards.
   It contains the Apps SDK, Platform SDK, and various python-based tools
   useful for working with and compiling models and executing inferences.
-  It's based on Red Hat's UBI9 base image.  Additionally it has the
-  vllm_tgis_adapter package installed.
+  It's based on Red Hat's UBI9 base image.
+  vllm_tgis_adapter package is deprecated for vllm v0.15.0.
+  For adapter support, check cloud_ai_inference_rh_ubi9_vllm_085_tgis instead.
   Entrypoint: /bin/bash
 
 - cloud_ai_inference_rh_ubi9_vllm_085_tgis:
-  This image is similar to cloud_ai_inference_rh_ubi9_vllm_tgis, but with
-  vllm v0.8.5 installed.
+  This image is similar to cloud_ai_inference_rh_ubi9_vllm.
+  Additionally it has the vllm_tgis_adapter package installed with vllm v0.8.5.
   Entrypoint: /bin/bash
+
+- cloud_ai_inference_rh_ubi9_vllm_qaic_pyt:
+  This image is useful for performing inferences and working with models.
+  It's able to compile models for, and execute models on AIC100 cards.
+  It contains vLLM and PyTorch in eager mode.
+  It contains the Apps SDK, Platform SDK, and is based on Red Hat's UBI9.
+  Entrypoint: python3 -m vllm.entrypoints.openai.api_server
 
 - cloud_ai_inference_ubuntu22:
   This image is useful for performing inferences and working with models.
@@ -54,6 +62,14 @@ The images contained are:
   It contains the Apps SDK, Platform SDK, and various python-based tools
   useful for working with and compiling models and executing inferences.
   It's based on Ubuntu 24.04.
+  Entrypoint: /bin/bash
+
+- cloud_ai_inference_ubuntu26:
+  This image is useful for performing inferences and working with models.
+  It's able to compile models for, and execute models on AIC100 cards.
+  It contains the Apps SDK, Platform SDK, and various python-based tools
+  useful for working with and compiling models and executing inferences.
+  It's based on Ubuntu 26.04.
   Entrypoint: /bin/bash
 
 - cloud_ai_inference_vllm:
@@ -97,6 +113,10 @@ The images contained are:
 
 - cloud_ai_triton_server:
   This image is similar to the inference images, but also contains the Triton Inference Server.
+  Entrypoint: /bin/bash
+
+- cloud_ai_apps_dev:
+  This image is used for development of AI applications. Contains hexagon tools and other dev tools.
   Entrypoint: /bin/bash
 
 ## License
